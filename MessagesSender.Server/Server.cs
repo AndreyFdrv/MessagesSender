@@ -1,6 +1,9 @@
-﻿using System.IO.Pipes;
+﻿using System;
+using System.IO.Pipes;
 using System.Threading;
 using System.Text;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace MessagesSender.Server
 {
@@ -27,6 +30,7 @@ namespace MessagesSender.Server
                     int messageSize = ServerStream.Read(buffer, 0, 1024);
                     string message = Encoding.UTF8.GetString(buffer, 0, messageSize);
                     Form.Message = message;
+                    SaveMessageInDatabase(message); 
                     byte[] response = Encoding.UTF8.GetBytes("OK");
                     ServerStream.Write(response, 0, response.Length);
                 }
@@ -34,6 +38,22 @@ namespace MessagesSender.Server
                 {
                     ServerStream.Close();
                     break;
+                }
+            }
+        }
+        private void SaveMessageInDatabase(string message)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "insert into Messages (ID, Text, Created) values(@ID, @Text, @Created)";
+                    command.Parameters.AddWithValue("@ID", Guid.NewGuid());
+                    command.Parameters.AddWithValue("@Text", message);
+                    command.Parameters.AddWithValue("@Created", DateTime.Now);
+                    command.ExecuteNonQuery();
                 }
             }
         }
