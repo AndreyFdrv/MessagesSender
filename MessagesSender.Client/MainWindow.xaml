@@ -8,6 +8,12 @@
         Title="Client" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,0.385"/>
-        <Button x:Name="btnConnect" Content="Подключиться к серверу" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="157" Click="BtnConnect_Click"/>
+        <Button x:Name="btnConnect" Content="Подключиться к серверу" HorizontalAlignment="Left" Margin="149,101,0,0" VerticalAlignment="Top" Width="157" Click="BtnConnect_Click"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="23" Margin="12,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="772"/>
+        <Label x:Name="lbl" Content="Отправленные сообщения:" HorizontalAlignment="Left" Margin="12,126,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtMessages" HorizontalAlignment="Left" Margin="10,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="252" Width="772"/>
+        <Button x:Name="btnSend" Content="Отправить сообщение" HorizontalAlignment="Left" Margin="12,101,0,0" VerticalAlignment="Top" Width="132" Click="BtnSend_Click"/>
+        <Label x:Name="lblInput" Content="Введите сообщение:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="124"/>
+
     </Grid>
 </Window>

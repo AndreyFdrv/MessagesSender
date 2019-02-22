@@ -8,6 +8,8 @@
         Title="Server" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMessages" Content="Полученные сообщения:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtMessages" HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="337" Width="772"/>
 
     </Grid>
 </Window>

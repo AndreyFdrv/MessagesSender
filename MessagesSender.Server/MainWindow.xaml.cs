@@ -15,6 +15,10 @@ namespace MessagesSender.Server
             get { return lblStatus.Content.ToString(); }
             set { Dispatcher.Invoke(new Action(() => { lblStatus.Content = value; })); }
         }
+        public string Message
+        {
+            set { Dispatcher.Invoke(new Action(() => { txtMessages.Text += (value + "\r\n"); })); }
+        }
         public MainWindow()
         {
             InitializeComponent();
