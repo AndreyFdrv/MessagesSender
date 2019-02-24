@@ -27,6 +27,8 @@ namespace MessagesSender.Client
             try
             {
                 byte[] buffer = Encoding.UTF8.GetBytes(message);
+                if(!ClientStream.IsConnected)
+                    return "Клиент не подключился к серверу";
                 ClientStream.Write(buffer, 0, buffer.Length);
                 ClientStream.Flush();
                 const int maxResponseSize = 1024;
